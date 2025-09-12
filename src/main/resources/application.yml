@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: syncore
+  redis:
+    host: redis
+    port: 6379
+logging:
+  level:
+    root: INFO
