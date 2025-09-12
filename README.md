@@ -25,5 +25,3 @@ docker compose up --build
   - Add FTP/email integration services
   - Add tests and Swagger docs
 
-## License
-MIT
