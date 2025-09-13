@@ -22,9 +22,21 @@ public class PatientController {
     public Patient create(@RequestBody Patient p) { return svc.create(p); }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Patient> get(@PathVariable String id) {
+    private final com.example.syncore.service.MicroserviceSimulator sim;
+
+public PatientController(PatientService svc, com.example.syncore.service.MicroserviceSimulator sim) { 
+    this.svc = svc; this.sim = sim; 
+}
+
+@GetMapping("/simulate/{input}")
+public String simulate(@PathVariable String input) {
+    return sim.callAnotherService(input);
+}
+
+@GetMapping("/{id}")
+public ResponseEntity<Patient> get(@PathVariable String id) {
         return svc.findById(id)
                 .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .orElseThrow(() -> new com.example.syncore.exception.NotFoundException("Patient not found: " + id));
     }
 }

@@ -27,3 +27,23 @@ docker compose up --build
 
 ## License
 MIT
+
+## Step 2 - Enhancements
+- Structured JSON logging (EFK-ready via logback + logstash encoder)
+- Global exception handler with proper JSON error responses
+- Simulated microservice call (`GET /api/patients/simulate/{input}`) with random failures
+
+
+## Step 3 - FTP & Email Automation (ready-to-run)
+This step adds:
+- FTP poller that connects to the `ftp` service, reads CSV files, imports patients.
+- Email reporter using SMTP (MailHog) that receives summary reports.
+- Background scheduler (runs every 30s by default).
+
+### Run everything (no edits required)
+```bash
+docker compose up --build
+```
+- FTP server will be available on port 21 (container name: `syncore-ftp`). A sample CSV is pre-mounted at `./ftp-data/patients_import.csv`.
+- MailHog web UI: http://localhost:8025 (view sent emails)
+- Application API: http://localhost:8080/api/patients
