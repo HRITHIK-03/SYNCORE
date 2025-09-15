@@ -1,4 +1,3 @@
-# Build stage (optional in local dev, left simple)
 FROM eclipse-temurin:17-jdk-alpine AS build
 WORKDIR /app
 COPY pom.xml .

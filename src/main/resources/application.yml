@@ -7,22 +7,6 @@ spring:
   redis:
     host: redis
     port: 6379
-logging:
-  level:
-    root: INFO
-
-
-syncore:
-  ftp:
-    host: ftp
-    port: 21
-    user: demo
-    pass: demo
-    poll-interval-ms: 30000
-  report:
-    to: dev@example.com
-
-spring:
   mail:
     host: mailhog
     port: 1025
@@ -34,3 +18,17 @@ spring:
           auth: false
           starttls:
             enable: false
+
+syncore:
+  ftp:
+    host: ftp
+    port: 21
+    user: demo
+    pass: demo
+    poll-interval-ms: 30000
+  report:
+    to: dev@example.com
+
+logging:
+  level:
+    root: INFO
